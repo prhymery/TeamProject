@@ -20,6 +20,17 @@ ATile::ATile()
 	// Tile의 콜리전프리셋 기본값 설정
 	Tile->SetCollisionProfileName(TEXT("OverlapAllDynamic"));
 
+	SetReplicates(true);
+
+
+}
+
+void ATile::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+
+	// 현재 Color 리플리케이트
+	DOREPLIFETIME(ATile, Color);
 }
 
 // Called when the game starts or when spawned
@@ -33,6 +44,11 @@ void ATile::BeginPlay()
 	// 플레이가 시작되면 델리게이트 함수 바인딩
 	OnActorBeginOverlap.AddDynamic(this, &ATile::ProcessBeginOverlap);
 
+}
+
+void ATile::OnRep_Color()
+{
+	SetTileMaterial();
 }
 
 void ATile::ProcessBeginOverlap(AActor* OverlappedActor, AActor* OtherActor)

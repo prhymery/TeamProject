@@ -9,9 +9,7 @@
 
 #include "ProjectSplashGameModeBase.generated.h"
 
-/**
- * 
- */
+
 UCLASS()
 class PROJECTSPLASH_API AProjectSplashGameModeBase : public AGameModeBase
 {

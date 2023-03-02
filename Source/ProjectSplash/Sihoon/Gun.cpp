@@ -20,6 +20,8 @@ AGun::AGun()
 	MaxAmmo = 100;
 	CurrentAmmo = 30;
 
+	SetReplicates(true);
+
 }
 
 // Called when the game starts or when spawned
@@ -35,8 +37,6 @@ void AGun::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	// 테스트용
-	Fire();
 }
 
 void AGun::Fire()

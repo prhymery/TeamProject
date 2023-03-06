@@ -4,6 +4,10 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+
+#include "Net/UnrealNetwork.h"
+#include "Engine/Engine.h"
+
 #include "Gun.generated.h"
 
 UCLASS()
@@ -23,6 +27,8 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	// RPC. 서버에서 실행. 신뢰성 체크
+	UFUNCTION(Server, Reliable, BlueprintCallable, meta = (KeyWords = "Sihoon"))
 	void Fire();
 
 	UPROPERTY(VisibleAnywhere, Category = "Components", BlueprintReadOnly)

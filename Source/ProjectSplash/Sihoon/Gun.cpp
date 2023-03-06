@@ -11,7 +11,7 @@ AGun::AGun()
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
-	Body = CreateDefaultSubobject<USkeletalMeshComponent >(TEXT("Body"));
+	Body = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Body"));
 	RootComponent = Body;
 	Bullet = nullptr;
 
@@ -39,9 +39,10 @@ void AGun::Tick(float DeltaTime)
 
 }
 
-void AGun::Fire()
+void AGun::Fire_Implementation()
 {
-	if (Bullet != nullptr)
+	// Fire함수는 RPC로 서버에서 실행되게 했지만 권한이 있는지 한 번 더 확인
+	if ((Bullet != nullptr) && (GetLocalRole() == ROLE_Authority))
 	{
 		GetWorld()->SpawnActor<AActor>(Bullet, Body->GetSocketTransform(FName(TEXT("Muzzle"))));
 	}

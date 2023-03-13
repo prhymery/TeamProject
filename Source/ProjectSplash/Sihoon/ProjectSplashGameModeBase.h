@@ -9,9 +9,7 @@
 
 #include "ProjectSplashGameModeBase.generated.h"
 
-/**
- * 
- */
+
 UCLASS()
 class PROJECTSPLASH_API AProjectSplashGameModeBase : public AGameModeBase
 {
@@ -24,4 +22,5 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Functions", meta = (KeyWords = "Sihoon"))
 	TileColor CheckWinColor();
+
 };

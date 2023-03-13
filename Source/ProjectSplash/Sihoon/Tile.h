@@ -5,6 +5,9 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 
+#include "Net/UnrealNetwork.h"
+#include "Engine/Engine.h"
+
 #include "Tile.generated.h"
 
 // 타일 색에 관련된 ENUM클래스
@@ -26,10 +29,19 @@ public:
 	// Sets default values for this actor's properties
 	ATile();
 
+	/** 프로퍼티 리플리케이션 */
+	void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+
+	// RepNotfy로 설정
+	UPROPERTY(ReplicatedUsing = OnRep_Color)
 	TileColor Color;
+
+	UFUNCTION()
+	void OnRep_Color();
 
 	// OnActorBeginOverlap에 델리게이트할 함수
 	UFUNCTION()
@@ -52,7 +64,7 @@ public:
 	TileColor GetTileColor();
 
 	UFUNCTION(BlueprintCallable, Category = "Functions", meta = (KeyWords = "Sihoon"))
-	void SetTileColor(TileColor Color);
+	void SetTileColor(TileColor BulletColor);
 
 	UFUNCTION(BlueprintCallable, Category = "Functions", meta = (KeyWords = "Sihoon"))
 	void SetTileMaterial();

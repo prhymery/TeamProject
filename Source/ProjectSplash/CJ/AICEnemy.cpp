@@ -110,3 +110,13 @@ void AAICEnemy::TargetPerceptionUpdate(AActor* actor, FAIStimulus const Stimulus
 		}
 	}
 }
+
+void AAICEnemy::SetBlackboardValues(EShootingTarget ShootingTarget, AActor* TargetActor = nullptr)
+{
+	GetBlackboardComponent()->SetValueAsEnum(TEXT("ShootingTarget"), (uint8)ShootingTarget);
+
+	if (ShootingTarget == EShootingTarget::Tile)
+	{
+		GetBlackboardComponent()->SetValueAsObject(TEXT("TargetTile"), TargetActor);
+	}
+}

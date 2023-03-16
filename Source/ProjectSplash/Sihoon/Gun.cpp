@@ -20,8 +20,8 @@ AGun::AGun()
 	MaxAmmo = 100;
 	CurrentAmmo = 30;
 
-	SetReplicates(true);
-
+	//SetReplicates(true);
+	bReplicates = true;
 }
 
 // Called when the game starts or when spawned

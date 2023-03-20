@@ -32,7 +32,7 @@ void UMyGameInstance::Init()
 	{
 		// 채팅 서버 연결 10번 시도
 		count++;
-		if (count >= 10)
+		if (count >= 1)
 		{
 			break;
 		}

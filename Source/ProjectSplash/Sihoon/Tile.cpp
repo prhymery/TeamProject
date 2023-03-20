@@ -20,8 +20,8 @@ ATile::ATile()
 	// Tile의 콜리전프리셋 기본값 설정
 	Tile->SetCollisionProfileName(TEXT("OverlapAllDynamic"));
 
-	SetReplicates(true);
-
+	//SetReplicates(true);
+	bReplicates = true;
 
 }
 

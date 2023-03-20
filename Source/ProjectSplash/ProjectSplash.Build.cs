@@ -9,7 +9,7 @@ public class ProjectSplash : ModuleRules
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 
         // AIModule - behavior tree 를 사용하기 위한 모듈 / GameplayTasks - Behavior tree Task 를 사용하기 위한 모듈 
-        PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "AIModule", "GameplayTasks" });	
+        PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "AIModule", "GameplayTasks", "UMG", "Sockets", "Networking" });	
 
 		PrivateDependencyModuleNames.AddRange(new string[] {  });
 

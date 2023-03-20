@@ -7,8 +7,9 @@ public class ProjectSplash : ModuleRules
 	public ProjectSplash(ReadOnlyTargetRules Target) : base(Target)
 	{
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
-	
-		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "UMG", "Sockets", "Networking" });
+
+        // AIModule - behavior tree 를 사용하기 위한 모듈 / GameplayTasks - Behavior tree Task 를 사용하기 위한 모듈 
+        PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "AIModule", "GameplayTasks" });	
 
 		PrivateDependencyModuleNames.AddRange(new string[] {  });
 

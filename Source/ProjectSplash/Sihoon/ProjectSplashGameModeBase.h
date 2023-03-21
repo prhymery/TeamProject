@@ -22,5 +22,4 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Functions", meta = (KeyWords = "Sihoon"))
 	TileColor CheckWinColor();
-
 };

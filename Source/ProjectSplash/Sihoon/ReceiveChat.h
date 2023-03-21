@@ -26,8 +26,6 @@ public:
 
 	bool bRunThread;
 
-	FString Test;
-
 private:
 	class FRunnableThread* Thread;
 	// Run함수에서 활용할 변수

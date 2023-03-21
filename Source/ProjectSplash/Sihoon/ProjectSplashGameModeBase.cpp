@@ -8,9 +8,7 @@
 
 AProjectSplashGameModeBase::AProjectSplashGameModeBase()
 {
-
 	PlayerControllerClass = AMyPlayerController::StaticClass();
-
 }
 
 // 이긴 팀의 색을 TileColor Enum으로 반환하는 함수
@@ -59,3 +57,4 @@ TileColor AProjectSplashGameModeBase::CheckWinColor()
 
     return Result;
 }
+

@@ -13,5 +13,13 @@ UCLASS()
 class PROJECTSPLASH_API AMyPlayerController : public APlayerController
 {
 	GENERATED_BODY()
-	
+
+public:
+	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
+
+protected:
+	class AProjectSplashGameModeBase* MyGameMode;
+	class UMyGameInstance* MyGI;
+
+	void CloseChat();
 };

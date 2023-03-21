@@ -30,9 +30,8 @@ void UMyGameInstance::Init()
 	// 채팅서버 연결
 	while (!bTryConnect)
 	{
-		// 채팅 서버 연결 10번 시도
-		count++;
-		if (count >= 1)
+		// 채팅 서버 연결 0번 시도
+		if (++count >= 0)
 		{
 			break;
 		}
@@ -44,23 +43,27 @@ void UMyGameInstance::Init()
 	// 채팅서버에 연결됐으면 통신용 쓰레드 생성
 	if (bTryConnect)
 	{
-		// 혹시 이미 생성된 쓰레드 있으면 지우고 생성
-		DeleteThread();
-
 		UE_LOG(LogTemp, Warning, TEXT("Create Thread"));
 		CreateThread();
 	}
 }
 
-void UMyGameInstance::CloseSocket()
+bool UMyGameInstance::CloseSocket()
 {
 	DeleteThread();
 
+	bool CloseResult = false;
+
+	_sleep(1000);
+
 	if (Socket != nullptr)
 	{
-		Socket->Close();
+		UE_LOG(LogTemp, Warning, TEXT("Close Socket"));
+		CloseResult = Socket->Close();
 		Socket = nullptr;
 	}
+
+	return CloseResult;
 }
 
 void UMyGameInstance::CreateThread()
@@ -86,13 +89,16 @@ void UMyGameInstance::CreateThread()
 
 void UMyGameInstance::DeleteThread()
 {
+	// FRunnable API를 이용한 쓰레드는 run함수가 끝나면 알아서 사라진다
 	if (SendThread != nullptr)
 	{
 		SendThread->Stop();
+		SendThread = nullptr;
 	}
 	if (ReceiveThread != nullptr)
 	{
 		ReceiveThread->Stop();
+		ReceiveThread = nullptr;
 	}
 }
 
@@ -146,4 +152,3 @@ void UMyGameInstance::SendChatting(EnumMessage SelectMessage)
 		SendThread->SendMessage(SelectMessage);
 	}
 }
-

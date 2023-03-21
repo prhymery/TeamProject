@@ -49,8 +49,6 @@ uint32 ReceiveChat::Run()
 		{
 			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("%s"), WideBuffer.Get()));
 		}
-
-		Test = WideBuffer.Get();
 	}
 
 	return 0;

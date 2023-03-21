@@ -3,7 +3,7 @@
 
 #include "SendChat.h"
 #include "Sockets.h"
-
+#include "MyGameInstance.h"
 
 SendChat::SendChat()
 {

@@ -19,10 +19,11 @@ public:
 
 	virtual void Init() override;
 
-	UFUNCTION(BlueprintCallable, meta = (KeyWords = "Sihoon"))
-	void CloseSocket();
+	bool CloseSocket();
 
+	UFUNCTION(BlueprintCallable, meta = (KeyWords = "Sihoon"))
 	void CreateThread();
+
 	void DeleteThread();
 
 	UPROPERTY(EditAnywhere, Category = "Widgets", BlueprintReadOnly)
@@ -37,11 +38,13 @@ public:
 	UFUNCTION(BlueprintCallable, meta = (KeyWords = "Sihoon"))
 	void SendChatting(EnumMessage SelectMessage);
 
+	UFUNCTION(BlueprintCallable, meta = (KeyWords = "Sihoon"))
+	bool ConnectChatServer();
+
 private:
 	class FSocket* Socket;
 	class SendChat* SendThread;
 	class ReceiveChat* ReceiveThread;
-
-	bool ConnectChatServer();
+	
 	bool bTryConnect;
 };
